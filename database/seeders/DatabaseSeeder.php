@@ -13,23 +13,23 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
-    {
-        // User::factory(10)->create();
-
-     $categories=[
+public function run(): void
+{
+    $categories = [
         'Technology',
         'Knowledges',
         'Books',
         'Sports',   
         'Strong',
-     ];
+    ];
+   \App\Models\Category::factory()->count(5)->create();
 
-     foreach ($categories as $category) {
-        Category::create([
-            'name'=> $category,
-            ]);
-            Post::factory(100)->create();
+    \App\Models\Post::factory(100)->create();
+    foreach ($categories as $category) {
+        Category::create(['name' => $category]);
     }
+
+    Post::factory(100)->create();
 }
+
 }
